@@ -1,4 +1,4 @@
-package com.enigma.dsales.entities;
+package com.enigma.inisalesapi.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;

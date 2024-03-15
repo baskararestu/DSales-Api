@@ -1,6 +1,7 @@
-package com.enigma.dsales.repository;
+package com.enigma.inisalesapi.repository;
 
-import com.enigma.dsales.entities.ProductDetail;
+import com.enigma.inisalesapi.entity.ProductDetail;
+import com.enigma.inisalesapi.entity.ProductPrice;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
