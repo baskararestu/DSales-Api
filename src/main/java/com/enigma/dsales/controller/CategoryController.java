@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import static com.enigma.dsales.mapper.ResponseControllerMapper.*;
 
@@ -29,7 +30,7 @@ public class CategoryController {
         message = "Successfully create category";
         return getResponseEntity(message, HttpStatus.CREATED, categoryResponse);
     }catch (Exception e) {
-        message = e.getMessage();
+        message = "Something wrong when adding category";
         return getResponseEntity(message, HttpStatus.INTERNAL_SERVER_ERROR, null);
         }
     }

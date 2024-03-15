@@ -19,6 +19,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -52,7 +53,20 @@ public class CartItemServiceImpl implements CartItemService {
             throw new ResponseStatusException(HttpStatus.CONFLICT,"Quantity cannot be 0");
         }
 
-     cartItemRepository.addItem
+        Optional<CartItem> exisitingCartItem=cartItemRepository.findByProductId(request.getProductId());
+
+
+        if(exisitingCartItem !=null){
+            CartItem dataCartItem = exisitingCartItem.get();
+            Integer newQty = dataCartItem.getQuantity() + request.getQuantity();
+            return CartItemResponse.builder()
+                    .productName(dataCartItem.getProduct().getProductDetail().getName())
+                    .categoryName(dataCartItem.getProduct().getProductDetail().getCategory().getName())
+                    .price(dataCartItem.getProduct().getProductPrice().getPrice().toString())
+                    .quantity(newQty)
+                    .build();
+        }
+        cartItemRepository.addItem
               (request.getQuantity(),customerId,request.getProductId());
         return CartItemResponse.builder()
                 .productName(dataProduct.getProductName())
