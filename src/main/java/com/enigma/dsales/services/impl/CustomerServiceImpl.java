@@ -7,6 +7,8 @@ import com.enigma.dsales.services.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class CustomerServiceImpl implements CustomerService {
@@ -38,5 +40,10 @@ public class CustomerServiceImpl implements CustomerService {
                 .build();
         }
         return null;
+    }
+
+    @Override
+    public Optional<Customer> getByUserCredentialId(String userCredentialId) {
+        return customerRepository.findCustomerByUserCredentialId(userCredentialId);
     }
 }

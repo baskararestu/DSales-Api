@@ -5,12 +5,12 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "t_cart")
+@Table(name = "t_cart_item")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder(toBuilder = true)
-public class Cart {
+public class CartItem {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;

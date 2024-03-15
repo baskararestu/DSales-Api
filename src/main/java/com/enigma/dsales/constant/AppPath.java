@@ -7,4 +7,5 @@ public class AppPath {
     public final static String ORDER = BASE_PATH + "orders";
     public final static String AUTH = BASE_PATH + "auth";
     public final static String CATEGORY = BASE_PATH + "categories";
+    public final static String CART = BASE_PATH+"carts";
 }

@@ -7,6 +7,8 @@ import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.enigma.dsales.entities.AppUser;
+import com.enigma.dsales.entities.Customer;
+import com.enigma.dsales.services.CustomerService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -14,25 +16,31 @@ import java.nio.charset.StandardCharsets;
 import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @Component
 public class JwtUtil {
-    //generate token
-    //getDataByUsername
-    //validation
     @Value("${app.dsales.jwt-secret}")
     private String jwtSecret;
     @Value("${spring.application.name}")
     private String appName;
     @Value("${app.dsales.jwt.jwtExpirationInSecond}")
     private long jwtExpirationInSecond;
+    private final CustomerService customerService;
+
+    public JwtUtil(CustomerService customerService) {
+        this.customerService = customerService;
+    }
 
     public String generateToken(AppUser appUser) {
         try {
             Algorithm algorithm = Algorithm.HMAC256(jwtSecret.getBytes(StandardCharsets.UTF_8));
+            Optional<Customer> customer = customerService.getByUserCredentialId(appUser.getId());
+            String customerId = customer.map(Customer::getId).orElse("");
             String token = JWT.create()
                     .withIssuer(appName)
                     .withSubject(appUser.getId())
+                    .withClaim("customerId", customerId)
                     .withExpiresAt(Instant.now().plusSeconds(jwtExpirationInSecond))
                     .withIssuedAt(Instant.now())
                     .withClaim("role", appUser.getRole().name())
@@ -63,6 +71,8 @@ public class JwtUtil {
             Map<String, String> userInfo = new HashMap<>();
             userInfo.put("userId", decodedJWT.getSubject());
             userInfo.put("role", decodedJWT.getClaim("role").asString());
+            userInfo.put("customerId",decodedJWT.getClaim("customerId").asString());
+
             return userInfo;
         } catch (JWTVerificationException e) {
             throw new RuntimeException();
