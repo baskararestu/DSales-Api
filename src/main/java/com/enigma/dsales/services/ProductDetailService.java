@@ -1,6 +1,6 @@
-package com.enigma.inisalesapi.service;
+package com.enigma.dsales.services;
 
-import com.enigma.inisalesapi.entity.ProductDetail;
+import com.enigma.dsales.entities.ProductDetail;
 
 import java.util.Optional;
 

@@ -1,19 +1,19 @@
-package com.enigma.inisalesapi.service.impl;
+package com.enigma.dsales.services.impl;
 
-import com.enigma.inisalesapi.config.security.JwtUtil;
-import com.enigma.inisalesapi.constant.ERole;
-import com.enigma.inisalesapi.dto.request.AuthRequest;
-import com.enigma.inisalesapi.dto.request.LoginRequest;
-import com.enigma.inisalesapi.dto.response.LoginResponse;
-import com.enigma.inisalesapi.dto.response.RegisterResponse;
-import com.enigma.inisalesapi.entity.*;
-import com.enigma.inisalesapi.mapper.AuthMapper;
-import com.enigma.inisalesapi.repository.UserCredentialRepository;
-import com.enigma.inisalesapi.service.AdminService;
-import com.enigma.inisalesapi.service.AuthService;
-import com.enigma.inisalesapi.service.CustomerService;
-import com.enigma.inisalesapi.service.RoleService;
-import com.enigma.inisalesapi.util.ValidationUtil;
+import com.enigma.dsales.config.security.JwtUtil;
+import com.enigma.dsales.constant.ERole;
+import com.enigma.dsales.dto.request.AuthRequest;
+import com.enigma.dsales.dto.request.LoginRequest;
+import com.enigma.dsales.dto.response.LoginResponse;
+import com.enigma.dsales.dto.response.RegisterResponse;
+import com.enigma.dsales.entities.*;
+import com.enigma.dsales.mapper.AuthMapper;
+import com.enigma.dsales.repository.UserCredentialRepository;
+import com.enigma.dsales.services.AdminService;
+import com.enigma.dsales.services.AuthService;
+import com.enigma.dsales.services.CustomerService;
+import com.enigma.dsales.services.RoleService;
+import com.enigma.dsales.util.ValidationUtil;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -26,6 +26,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
+
+import static com.enigma.dsales.mapper.AdminMapper.mapToAdmin;
+import static com.enigma.dsales.mapper.RoleMapper.mapToRole;
 
 @Service
 @RequiredArgsConstructor
@@ -60,13 +63,13 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public RegisterResponse registerAdmin(AuthRequest authRequest) {
         try {
-            Role role = AuthMapper.getRole(ERole.ROLE_ADMIN);
+            Role role = mapToRole(ERole.ROLE_ADMIN);
             role = roleService.getOrSave(role);
 
             UserCredential userCredential = AuthMapper.getUserCredential(authRequest, role, passwordEncoder);
             userCredentialRepository.saveAndFlush(userCredential);
 
-            Admin admin = AuthMapper.getAdmin(authRequest, userCredential);
+            Admin admin = mapToAdmin(authRequest, userCredential);
             adminService.create(admin);
 
             return AuthMapper.getRegisterResponse(authRequest, userCredential);
@@ -78,15 +81,15 @@ public class AuthServiceImpl implements AuthService {
     @Transactional(rollbackOn = Exception.class)
     @Override
     public RegisterResponse registerSuperAdmin(AuthRequest authRequest) {
-        String message = "";
+        String message;
         try {
-            Role role = AuthMapper.getRole(ERole.ROLE_SUPER_ADMIN);
+            Role role = mapToRole(ERole.ROLE_SUPER_ADMIN);
             role = roleService.getOrSave(role);
 
             UserCredential userCredential = AuthMapper.getUserCredential(authRequest, role, passwordEncoder);
             userCredentialRepository.saveAndFlush(userCredential);
 
-            Admin admin = AuthMapper.getAdmin(authRequest, userCredential);
+            Admin admin = mapToAdmin(authRequest, userCredential);
             adminService.create(admin);
             return AuthMapper.getRegisterResponse(authRequest, userCredential);
         } catch (Exception e) {
@@ -99,7 +102,7 @@ public class AuthServiceImpl implements AuthService {
     @Transactional
     public RegisterResponse registerCustomer(AuthRequest authRequest) {
         try {
-            Role role = AuthMapper.getRole(ERole.ROLE_CUSTOMER);
+            Role role = mapToRole(ERole.ROLE_CUSTOMER);
             role = roleService.getOrSave(role);
 
             UserCredential userCredential = AuthMapper.getUserCredential(authRequest, role, passwordEncoder);

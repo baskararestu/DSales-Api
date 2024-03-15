@@ -9,6 +9,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import static com.enigma.dsales.mapper.AppUserMapper.mapToAppUser;
+
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
@@ -18,23 +20,13 @@ public class UserServiceImpl implements UserService {
     public AppUser loadUserByUserId(String id) {
         UserCredential userCredential = userCredentialRepository.findById(id)
                 .orElseThrow(() -> new UsernameNotFoundException("Invalid credential"));
-        return AppUser.builder()
-                .id(userCredential.getId())
-                .username(userCredential.getUsername())
-                .password(userCredential.getPassword())
-                .role(userCredential.getRole().getRoleName())
-                .build();
+        return mapToAppUser(userCredential);
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserCredential userCredential = userCredentialRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Invalid credential"));
-        return AppUser.builder()
-                .id(userCredential.getId())
-                .username(userCredential.getUsername())
-                .password(userCredential.getPassword())
-                .role(userCredential.getRole().getRoleName())
-                .build();
+        return mapToAppUser(userCredential);
     }
 }

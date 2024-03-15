@@ -1,10 +1,10 @@
-package com.enigma.inisalesapi.controller;
+package com.enigma.dsales.controller;
 
-import com.enigma.inisalesapi.constant.AppPath;
-import com.enigma.inisalesapi.dto.request.CategoryRequest;
-import com.enigma.inisalesapi.dto.response.CategoryResponse;
-import com.enigma.inisalesapi.dto.response.PagingResponse;
-import com.enigma.inisalesapi.service.CategoryService;
+import com.enigma.dsales.constant.AppPath;
+import com.enigma.dsales.dto.request.CategoryRequest;
+import com.enigma.dsales.dto.response.CategoryResponse;
+import com.enigma.dsales.dto.response.PagingResponse;
+import com.enigma.dsales.services.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -12,7 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import static com.enigma.inisalesapi.mapper.ResponseControllerMapper.*;
+import static com.enigma.dsales.mapper.ResponseControllerMapper.*;
 
 @RestController
 @RequiredArgsConstructor

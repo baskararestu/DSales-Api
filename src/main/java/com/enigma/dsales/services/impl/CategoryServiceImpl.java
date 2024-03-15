@@ -1,11 +1,10 @@
-package com.enigma.inisalesapi.service.impl;
+package com.enigma.dsales.services.impl;
 
-import com.enigma.inisalesapi.dto.request.CategoryRequest;
-import com.enigma.inisalesapi.dto.response.AdminResponse;
-import com.enigma.inisalesapi.dto.response.CategoryResponse;
-import com.enigma.inisalesapi.entity.Category;
-import com.enigma.inisalesapi.repository.CategoryRepository;
-import com.enigma.inisalesapi.service.CategoryService;
+import com.enigma.dsales.dto.request.CategoryRequest;
+import com.enigma.dsales.dto.response.CategoryResponse;
+import com.enigma.dsales.entities.Category;
+import com.enigma.dsales.repository.CategoryRepository;
+import com.enigma.dsales.services.CategoryService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -13,9 +12,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor

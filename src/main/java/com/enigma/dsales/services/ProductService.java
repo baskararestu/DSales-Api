@@ -1,10 +1,8 @@
-package com.enigma.inisalesapi.service;
+package com.enigma.dsales.services;
 
-import com.enigma.inisalesapi.dto.request.ProductRequest;
-import com.enigma.inisalesapi.dto.response.ProductResponse;
+import com.enigma.dsales.dto.request.ProductRequest;
+import com.enigma.dsales.dto.response.ProductResponse;
 import org.springframework.data.domain.Page;
-
-import java.util.List;
 
 public interface ProductService {
     ProductResponse createProduct(ProductRequest productRequest);

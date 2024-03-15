@@ -1,9 +1,9 @@
-package com.enigma.inisalesapi.service.impl;
+package com.enigma.dsales.services.impl;
 
-import com.enigma.inisalesapi.dto.response.CustomerResponse;
-import com.enigma.inisalesapi.entity.Customer;
-import com.enigma.inisalesapi.repository.CustomerRepository;
-import com.enigma.inisalesapi.service.CustomerService;
+import com.enigma.dsales.dto.response.CustomerResponse;
+import com.enigma.dsales.entities.Customer;
+import com.enigma.dsales.repository.CustomerRepository;
+import com.enigma.dsales.services.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

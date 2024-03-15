@@ -1,10 +1,10 @@
-package com.enigma.inisalesapi.service.impl;
+package com.enigma.dsales.services.impl;
 
-import com.enigma.inisalesapi.entity.Category;
-import com.enigma.inisalesapi.entity.ProductDetail;
-import com.enigma.inisalesapi.exception.NotFoundException;
-import com.enigma.inisalesapi.repository.ProductDetailRepository;
-import com.enigma.inisalesapi.service.ProductDetailService;
+import com.enigma.dsales.entities.Category;
+import com.enigma.dsales.entities.ProductDetail;
+import com.enigma.dsales.exception.NotFoundException;
+import com.enigma.dsales.repository.ProductDetailRepository;
+import com.enigma.dsales.services.ProductDetailService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

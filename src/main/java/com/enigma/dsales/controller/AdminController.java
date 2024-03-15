@@ -1,8 +1,8 @@
-package com.enigma.inisalesapi.controller;
+package com.enigma.dsales.controller;
 
-import com.enigma.inisalesapi.constant.AppPath;
-import com.enigma.inisalesapi.dto.response.AdminResponse;
-import com.enigma.inisalesapi.service.AdminService;
+import com.enigma.dsales.constant.AppPath;
+import com.enigma.dsales.dto.response.AdminResponse;
+import com.enigma.dsales.services.AdminService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

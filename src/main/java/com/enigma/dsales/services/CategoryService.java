@@ -1,13 +1,9 @@
-package com.enigma.inisalesapi.service;
+package com.enigma.dsales.services;
 
 
-import com.enigma.inisalesapi.dto.request.CategoryRequest;
-import com.enigma.inisalesapi.dto.response.AdminResponse;
-import com.enigma.inisalesapi.dto.response.CategoryResponse;
-import com.enigma.inisalesapi.entity.Category;
+import com.enigma.dsales.dto.request.CategoryRequest;
+import com.enigma.dsales.dto.response.CategoryResponse;
 import org.springframework.data.domain.Page;
-
-import java.util.List;
 
 public interface CategoryService {
     CategoryResponse createCategory(CategoryRequest categoryRequest);

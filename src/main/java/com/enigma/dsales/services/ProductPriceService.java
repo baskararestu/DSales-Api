@@ -1,6 +1,6 @@
-package com.enigma.inisalesapi.service;
+package com.enigma.dsales.services;
 
-import com.enigma.inisalesapi.entity.ProductPrice;
+import com.enigma.dsales.entities.ProductPrice;
 
 import java.util.Optional;
 
@@ -9,6 +9,5 @@ public interface ProductPriceService {
 
     Optional<ProductPrice> getById(String id);
     void deleteById(String id);
-    //    ProductDetail update(ProductDetail newProductDetail);
     ProductPrice update(ProductPrice newPrice);
 }

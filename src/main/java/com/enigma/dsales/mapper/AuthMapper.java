@@ -1,38 +1,23 @@
-package com.enigma.inisalesapi.mapper;
+package com.enigma.dsales.mapper;
 
-import com.enigma.inisalesapi.constant.ERole;
-import com.enigma.inisalesapi.dto.request.AuthRequest;
-import com.enigma.inisalesapi.dto.request.LoginRequest;
-import com.enigma.inisalesapi.dto.response.LoginResponse;
-import com.enigma.inisalesapi.dto.response.RegisterResponse;
-import com.enigma.inisalesapi.entity.Admin;
-import com.enigma.inisalesapi.entity.AppUser;
-import com.enigma.inisalesapi.entity.Role;
-import com.enigma.inisalesapi.entity.UserCredential;
+import com.enigma.dsales.constant.ERole;
+import com.enigma.dsales.dto.request.AuthRequest;
+import com.enigma.dsales.dto.request.LoginRequest;
+import com.enigma.dsales.dto.response.LoginResponse;
+import com.enigma.dsales.dto.response.RegisterResponse;
+import com.enigma.dsales.entities.Admin;
+import com.enigma.dsales.entities.AppUser;
+import com.enigma.dsales.entities.Role;
+import com.enigma.dsales.entities.UserCredential;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 public class AuthMapper {
-    public static Role getRole(ERole eRole) {
-        return Role.builder()
-                .roleName(eRole)
-                .build();
-    }
     public static UserCredential getUserCredential
             (AuthRequest authRequest, Role role, PasswordEncoder passwordEncoder) {
         return UserCredential.builder()
                 .username(authRequest.getUsername())
                 .password(passwordEncoder.encode(authRequest.getPassword()))
                 .role(role)
-                .build();
-    }
-
-
-    public static Admin getAdmin(AuthRequest authRequest, UserCredential userCredential) {
-        return Admin.builder()
-                .userCredential(userCredential)
-                .name(authRequest.getName())
-                .email(authRequest.getEmail())
-                .phoneNumber(authRequest.getMobilePhone())
                 .build();
     }
 

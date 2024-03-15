@@ -1,4 +1,4 @@
-package com.enigma.inisalesapi.util;
+package com.enigma.dsales.util;
 
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;

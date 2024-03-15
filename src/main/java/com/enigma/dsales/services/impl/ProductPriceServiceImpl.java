@@ -1,9 +1,9 @@
-package com.enigma.inisalesapi.service.impl;
+package com.enigma.dsales.services.impl;
 
-import com.enigma.inisalesapi.entity.ProductPrice;
-import com.enigma.inisalesapi.exception.NotFoundException;
-import com.enigma.inisalesapi.repository.ProductPriceRepository;
-import com.enigma.inisalesapi.service.ProductPriceService;
+import com.enigma.dsales.entities.ProductPrice;
+import com.enigma.dsales.exception.NotFoundException;
+import com.enigma.dsales.repository.ProductPriceRepository;
+import com.enigma.dsales.services.ProductPriceService;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;

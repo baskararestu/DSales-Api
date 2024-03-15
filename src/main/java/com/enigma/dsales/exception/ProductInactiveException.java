@@ -1,4 +1,4 @@
-package com.enigma.inisalesapi.exception;
+package com.enigma.dsales.exception;
 
 public class ProductInactiveException extends RuntimeException {
     public ProductInactiveException(String message) {

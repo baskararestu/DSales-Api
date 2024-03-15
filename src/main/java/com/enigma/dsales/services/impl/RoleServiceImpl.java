@@ -1,8 +1,8 @@
-package com.enigma.inisalesapi.service.impl;
+package com.enigma.dsales.services.impl;
 
-import com.enigma.inisalesapi.entity.Role;
-import com.enigma.inisalesapi.repository.RoleRepository;
-import com.enigma.inisalesapi.service.RoleService;
+import com.enigma.dsales.entities.Role;
+import com.enigma.dsales.repository.RoleRepository;
+import com.enigma.dsales.services.RoleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

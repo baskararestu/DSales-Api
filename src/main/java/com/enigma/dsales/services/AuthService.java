@@ -1,10 +1,10 @@
-package com.enigma.inisalesapi.service;
+package com.enigma.dsales.services;
 
 
-import com.enigma.inisalesapi.dto.request.AuthRequest;
-import com.enigma.inisalesapi.dto.request.LoginRequest;
-import com.enigma.inisalesapi.dto.response.LoginResponse;
-import com.enigma.inisalesapi.dto.response.RegisterResponse;
+import com.enigma.dsales.dto.request.AuthRequest;
+import com.enigma.dsales.dto.request.LoginRequest;
+import com.enigma.dsales.dto.response.LoginResponse;
+import com.enigma.dsales.dto.response.RegisterResponse;
 
 public interface AuthService {
     LoginResponse login (LoginRequest loginRequest);

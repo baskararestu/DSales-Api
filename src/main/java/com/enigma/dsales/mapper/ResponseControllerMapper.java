@@ -1,9 +1,9 @@
-package com.enigma.inisalesapi.mapper;
+package com.enigma.dsales.mapper;
 
-import com.enigma.inisalesapi.dto.response.CommonResponse;
-import com.enigma.inisalesapi.dto.response.DefaultResponse;
-import com.enigma.inisalesapi.dto.response.PagingResponse;
-import com.enigma.inisalesapi.dto.response.ProductResponse;
+import com.enigma.dsales.dto.response.CommonResponse;
+import com.enigma.dsales.dto.response.DefaultResponse;
+import com.enigma.dsales.dto.response.PagingResponse;
+import com.enigma.dsales.dto.response.ProductResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

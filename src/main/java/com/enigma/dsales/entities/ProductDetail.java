@@ -1,8 +1,11 @@
-package com.enigma.inisalesapi.entity;
+package com.enigma.dsales.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
@@ -12,7 +15,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Data
 @Builder(toBuilder = true)
-public class    ProductDetail {
+public class ProductDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;

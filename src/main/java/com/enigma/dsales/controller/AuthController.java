@@ -1,11 +1,11 @@
-package com.enigma.inisalesapi.controller;
+package com.enigma.dsales.controller;
 
-import com.enigma.inisalesapi.constant.AppPath;
-import com.enigma.inisalesapi.dto.request.AuthRequest;
-import com.enigma.inisalesapi.dto.request.LoginRequest;
-import com.enigma.inisalesapi.dto.response.LoginResponse;
-import com.enigma.inisalesapi.dto.response.RegisterResponse;
-import com.enigma.inisalesapi.service.AuthService;
+import com.enigma.dsales.constant.AppPath;
+import com.enigma.dsales.dto.request.AuthRequest;
+import com.enigma.dsales.dto.request.LoginRequest;
+import com.enigma.dsales.dto.response.LoginResponse;
+import com.enigma.dsales.dto.response.RegisterResponse;
+import com.enigma.dsales.services.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import static com.enigma.inisalesapi.mapper.ResponseControllerMapper.getResponseEntity;
+import static com.enigma.dsales.mapper.ResponseControllerMapper.getResponseEntity;
 
 @RestController
 @RequiredArgsConstructor

@@ -1,6 +1,7 @@
-package com.enigma.inisalesapi.service;
+package com.enigma.dsales.services;
 
-import com.enigma.inisalesapi.entity.Role;
+
+import com.enigma.dsales.entities.Role;
 
 public interface RoleService {
     Role getOrSave(Role role);
