@@ -1,6 +1,6 @@
 package com.enigma.dsales.config.security;
 
-import com.enigma.dsales.service.UserService;
+import com.enigma.dsales.services.UserService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

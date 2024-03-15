@@ -6,7 +6,7 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import com.enigma.dsales.entity.AppUser;
+import com.enigma.dsales.entities.AppUser;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -20,22 +20,22 @@ public class JwtUtil {
     //generate token
     //getDataByUsername
     //validation
-    @Value("${app.shopeymart.jwt-secret}")
+    @Value("${app.dsales.jwt-secret}")
     private String jwtSecret;
-    @Value("${app.shopeymart.jwt.app-name}")
+    @Value("${spring.application.name}")
     private String appName;
-    @Value("${app.shopeymart.jwt.jwtExpirationInSecond}")
+    @Value("${app.dsales.jwt.jwtExpirationInSecond}")
     private long jwtExpirationInSecond;
 
     public String generateToken(AppUser appUser) {
         try {
             Algorithm algorithm = Algorithm.HMAC256(jwtSecret.getBytes(StandardCharsets.UTF_8));
             String token = JWT.create()
-                    .withIssuer(appName)//info nama aplikasi
-                    .withSubject(appUser.getId())//menentukan objek yang akan dibuat biasanya dari ID
-                    .withExpiresAt(Instant.now().plusSeconds(jwtExpirationInSecond))//menetapkan waktu kadaluarsa dalam detik
-                    .withIssuedAt(Instant.now())//menetapkan waktu token kapan dibuat
-                    .withClaim("role", appUser.getRole().name())//menambahkan claim atau info nama pengguna
+                    .withIssuer(appName)
+                    .withSubject(appUser.getId())
+                    .withExpiresAt(Instant.now().plusSeconds(jwtExpirationInSecond))
+                    .withIssuedAt(Instant.now())
+                    .withClaim("role", appUser.getRole().name())
                     .sign(algorithm);
             return token;
         } catch (JWTCreationException e) {

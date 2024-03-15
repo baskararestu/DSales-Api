@@ -1,4 +1,4 @@
-package com.enigma.dsales.entity;
+package com.enigma.dsales.entities;
 
 import com.enigma.dsales.constant.ERole;
 import lombok.AllArgsConstructor;
